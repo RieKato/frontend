@@ -1,6 +1,15 @@
-import "@/styles/globals.css";
-import type { AppProps } from "next/app";
+// AuthProvider をアプリ全体に適用します。
 
-export default function App({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />;
+import type { AppProps } from 'next/app';
+import { AuthProvider } from '../contexts/AuthContext';
+import '../styles/globals.css';
+
+function MyApp({ Component, pageProps }: AppProps) {
+  return (
+    <AuthProvider>
+      <Component {...pageProps} />
+    </AuthProvider>
+  );
 }
+
+export default MyApp;
